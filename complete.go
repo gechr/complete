@@ -6,9 +6,9 @@ import (
 	"io"
 	"os"
 	"strconv"
-	"strings"
 
 	"github.com/gechr/complete/cmd"
+	"github.com/sahilm/fuzzy"
 )
 
 const (
@@ -70,11 +70,15 @@ func (c *Complete) Complete() bool {
 	Log("Options: %s", options)
 
 	// filter only options that match the last argument
-	matches := []string{}
-	for _, option := range options {
-		if strings.HasPrefix(option, a.Last) {
-			matches = append(matches, option)
-		}
+	if a.Last == "" {
+		Log("Matches: %s", options)
+		c.output(options)
+		return true
+	}
+	fuzzyMatches := fuzzy.Find(a.Last, options)
+	matches := make([]string, len(fuzzyMatches))
+	for i, fm := range fuzzyMatches {
+		matches[i] = fm.Str
 	}
 	Log("Matches: %s", matches)
 	c.output(matches)
