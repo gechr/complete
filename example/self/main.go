@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/posener/complete"
+	"github.com/gechr/complete"
 )
 
 func main() {

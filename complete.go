@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/posener/complete/cmd"
+	"github.com/gechr/complete/cmd"
 )
 
 const (

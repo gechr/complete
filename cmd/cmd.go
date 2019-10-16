@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/posener/complete/cmd/install"
+	"github.com/gechr/complete/cmd/install"
 )
 
 // CLI for command line
